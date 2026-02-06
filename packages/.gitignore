@@ -1,0 +1,5 @@
+# Package build outputs
+*/dist/
+
+# TypeScript incremental build info
+*.tsbuildinfo

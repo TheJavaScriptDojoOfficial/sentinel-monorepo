@@ -1,0 +1,18 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      // Node.js environments don't need the DOM library
+      "lib": ["ESNext"], 
+      "module": "CommonJS", // Plugins often need CJS, but ESNext is fine if your package.json has "type": "module"
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "types": ["node"] 
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"],
+    // If this plugin imports the react package (e.g. for shared types), reference it here:
+    "references": [
+      { "path": "../react" }
+    ]
+  }

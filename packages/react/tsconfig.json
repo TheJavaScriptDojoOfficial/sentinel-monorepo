@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "jsx": "react-jsx",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      
+      // This allows you to import this package using its package name inside the monorepo
+      "paths": {
+        "@sentinel/react": ["./src/index.tsx"]
+      }
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+  }

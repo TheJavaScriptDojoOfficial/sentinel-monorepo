@@ -1,0 +1,7 @@
+{
+    "files": [],
+    "references": [
+      { "path": "./packages/react" },
+      { "path": "./packages/vite-plugin" }
+    ]
+  }
