@@ -1,5 +1,11 @@
 # @sentinel-js/vite-plugin
 
+## 0.1.3
+
+### Patch Changes
+
+- Added MIT Licence
+
 ## 0.1.2
 
 ### Patch Changes
