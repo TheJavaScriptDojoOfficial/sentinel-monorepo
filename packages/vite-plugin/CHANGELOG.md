@@ -1,5 +1,11 @@
 # @sentinel-js/vite-plugin
 
+## 0.1.5
+
+### Patch Changes
+
+- updated github repo links in package json
+
 ## 0.1.4
 
 ### Patch Changes
