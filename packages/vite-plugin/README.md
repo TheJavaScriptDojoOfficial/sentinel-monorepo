@@ -10,7 +10,7 @@ npm install @sentinel-js/vite-plugin -D
 pnpm add -D @sentinel-js/vite-plugin
 ```
 
-**Peer dependency:** `vite` ^4.0.0 or ^5.0.0 (and higher compatible versions).
+**Peer dependency:** `vite` ^4.0.0, ^5.0.0, ^6.0.0, or ^7.0.0.
 
 ## Setup
 
