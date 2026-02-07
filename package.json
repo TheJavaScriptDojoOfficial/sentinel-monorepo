@@ -16,5 +16,9 @@
   "license": "MIT",
   "devDependencies": {
     "@changesets/cli": "^2.29.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo"
   }
 }
