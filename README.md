@@ -111,3 +111,11 @@ sentinel-monorepo/
 ## License
 
 ISC
+
+## Troubleshooting
+
+See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for common issues and solutions, including:
+- React hook errors in development mode
+- Version showing as "unknown"
+- Update detection not working
+- Build errors with Vite 6/7

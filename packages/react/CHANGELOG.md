@@ -1,5 +1,11 @@
 # @sentinel-js/react
 
+## 0.1.2
+
+### Patch Changes
+
+- Add required Vite configuration to README: users must add `resolve.dedupe` and `optimizeDeps.include` to prevent React instance conflicts in development mode.
+
 ## 0.1.1
 
 ### Patch Changes
