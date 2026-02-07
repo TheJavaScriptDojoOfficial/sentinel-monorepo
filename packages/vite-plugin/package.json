@@ -2,6 +2,7 @@
   "name": "@sentinel-js/vite-plugin",
   "version": "0.1.2",
   "type": "module",
+  "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
