@@ -30,6 +30,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo/blob/main/packages/vite-plugin/README.md"
+    "url": "git+https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo.git",
+    "directory": "packages/vite-plugin"
+  },
+  "homepage": "https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo#readme",
+  "bugs": {
+    "url": "https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo/issues"
   }
 }

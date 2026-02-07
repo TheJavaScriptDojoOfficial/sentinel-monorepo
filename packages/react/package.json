@@ -37,6 +37,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo/blob/main/packages/react/README.md"
+    "url": "git+https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo#readme",
+  "bugs": {
+    "url": "https://github.com/TheJavaScriptDojoOfficial/sentinel-monorepo/issues"
   }
 }
