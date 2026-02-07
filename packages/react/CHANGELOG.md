@@ -1,5 +1,11 @@
 # @sentinel-js/react
 
+## 0.1.4
+
+### Patch Changes
+
+- Docs: added github repository links
+
 ## 0.1.3
 
 ### Patch Changes
