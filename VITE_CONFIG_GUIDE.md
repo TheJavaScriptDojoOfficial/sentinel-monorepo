@@ -1,10 +1,10 @@
 # Vite Configuration for @sentinel-js/react
 
-When using `@sentinel-js/react` in your Vite app, you need to configure Vite to ensure a single React instance is used in both development and production builds.
+When using `@sentinel-js/react` in your Vite app, add **`@sentinel-js/vite-plugin`** to your config. The plugin handles the rest.
 
-## Required Configuration
+## Configuration
 
-Add the following to your `vite.config.ts`:
+Add the plugin to your `vite.config.ts`. No other options are required for React to work correctly:
 
 ```typescript
 import { defineConfig } from 'vite';
@@ -16,35 +16,24 @@ export default defineConfig({
     react(),
     sentinelPlugin({ fileName: 'version.json' }),
   ],
-  resolve: {
-    // Ensure only one copy of React is used
-    dedupe: ['react', 'react-dom'],
-  },
-  optimizeDeps: {
-    // Include the Sentinel library in dependency pre-bundling
-    // This ensures it uses the same React instance in dev mode
-    include: ['@sentinel-js/react'],
-  },
 });
 ```
 
-## Why this is needed
+The plugin automatically:
 
-The `@sentinel-js/react` package externalizes `react`, `react-dom`, and `react/jsx-runtime`. In development mode, Vite needs explicit configuration to:
+- Sets **`resolve.dedupe`** to `['react', 'react-dom']` (and merges with any existing `dedupe` you have)
+- Adds **`@sentinel-js/react`** to **`optimizeDeps.include`** (and merges with any existing `include`)
 
-1. **`resolve.dedupe`**: Prevents multiple copies of React from being loaded
-2. **`optimizeDeps.include`**: Forces Vite to pre-bundle the library with your app's React instance in dev mode
+That keeps a single React instance in both dev and build, so you avoid errors like "Cannot read properties of undefined (reading 'ReactCurrentDispatcher')".
 
-Without these settings, you may see errors like:
-- "Cannot read properties of undefined (reading 'ReactCurrentDispatcher')"
-- "Cannot read properties of undefined (reading 'ReactCurrentOwner')"
+## Optional overrides
+
+If you need to customize `dedupe` or `optimizeDeps.include`, you can still set them in your config. The plugin merges with your values and adds `react`/`react-dom` and `@sentinel-js/react` as needed.
 
 ## Testing
 
-After adding this configuration:
-
 ```bash
-npm run dev    # Should work without React errors
-npm run build  # Should work and detect updates correctly
+npm run dev     # Should work without React errors
+npm run build   # Should work and detect updates correctly
 npm run preview # Should work after build
 ```

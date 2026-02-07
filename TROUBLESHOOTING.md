@@ -17,25 +17,22 @@ These errors occur when multiple copies of React are loaded in your application.
 
 ### Solution
 
-Add the following to your `vite.config.ts`:
+**With `@sentinel-js/vite-plugin` (recommended):** The plugin automatically injects `resolve.dedupe` and `optimizeDeps.include` so a single React instance is used. Ensure you have the plugin in your config:
 
 ```typescript
 export default defineConfig({
   plugins: [react(), sentinelPlugin()],
-  resolve: {
-    // Ensures only one copy of React is resolved
-    dedupe: ['react', 'react-dom'],
-  },
-  optimizeDeps: {
-    // Forces Vite to pre-bundle the library with your React in dev mode
-    include: ['@sentinel-js/react'],
-  },
 });
 ```
 
-**Why this works:**
-- `dedupe`: Prevents Vite from resolving multiple versions of React
-- `optimizeDeps.include`: Forces the library to be pre-bundled with your app's dependencies in dev mode, ensuring it uses the same React instance
+No extra config is required. If you still see the error, upgrade to the latest `@sentinel-js/vite-plugin`.
+
+**Without the plugin or on an older plugin version:** You can add this manually to your `vite.config.ts`:
+
+```typescript
+resolve: { dedupe: ['react', 'react-dom'] },
+optimizeDeps: { include: ['@sentinel-js/react'] },
+```
 
 ## Version Shows as "unknown"
 

@@ -30,20 +30,30 @@ export default function sentinelPlugin(options: SentinelPluginOptions = {}): Plu
   let outDir: string;
 
   return {
-    name: '@your-scope/vite-plugin',
-    apply: 'build', // Only run this plugin during the build command, not dev server
+    name: '@sentinel-js/vite-plugin',
+    // Run in both dev and build so resolve/optimizeDeps are applied in dev
+    config(userConfig) {
+      const existingDedupe = userConfig.resolve?.dedupe;
+      const dedupe = Array.isArray(existingDedupe)
+        ? [...new Set([...existingDedupe, 'react', 'react-dom'])]
+        : ['react', 'react-dom'];
+
+      const existingInclude = userConfig.optimizeDeps?.include;
+      const include = Array.isArray(existingInclude)
+        ? [...new Set([...existingInclude, '@sentinel-js/react'])]
+        : ['@sentinel-js/react'];
+
+      return {
+        define: {
+          __SENTINEL_VERSION__: JSON.stringify(versionHash),
+        },
+        resolve: { ...(userConfig.resolve ?? {}), dedupe },
+        optimizeDeps: { ...(userConfig.optimizeDeps ?? {}), include },
+      };
+    },
 
     configResolved(config) {
       outDir = config.build.outDir;
-    },
-
-    // Inject the version into the client code so the React SDK knows "what version am I?"
-    config() {
-      return {
-        define: {
-          '__SENTINEL_VERSION__': JSON.stringify(versionHash),
-        },
-      };
     },
 
     // 3. Write the version.json file to the build output directory

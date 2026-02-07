@@ -14,30 +14,7 @@ pnpm add @sentinel-js/react
 
 **Peer dependencies:** `react` and `react-dom` (>=16.8.0). You must have them installed in your app.
 
-### Vite Configuration (Required)
-
-Add the following to your `vite.config.ts` to ensure a single React instance:
-
-```typescript
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import sentinelPlugin from '@sentinel-js/vite-plugin';
-
-export default defineConfig({
-  plugins: [
-    react(),
-    sentinelPlugin(),
-  ],
-  resolve: {
-    dedupe: ['react', 'react-dom'],
-  },
-  optimizeDeps: {
-    include: ['@sentinel-js/react'],
-  },
-});
-```
-
-Without `dedupe` and `optimizeDeps.include`, you may encounter React hook errors in development mode.
+When you add `@sentinel-js/vite-plugin` to your Vite config, it automatically sets `resolve.dedupe` and `optimizeDeps.include` so a single React instance is used in both dev and build. No extra config is required.
 
 ## Usage
 

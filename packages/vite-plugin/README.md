@@ -14,7 +14,7 @@ pnpm add -D @sentinel-js/vite-plugin
 
 ## Setup
 
-Add the plugin to your Vite config. It only runs for **production builds** (`vite build`), not for the dev server.
+Add the plugin to your Vite config. No other configuration is required.
 
 ```typescript
 // vite.config.ts
@@ -32,6 +32,11 @@ export default defineConfig({
   ],
 });
 ```
+
+The plugin automatically injects the following so `@sentinel-js/react` works without React hook errors:
+
+- **`resolve.dedupe`** — Ensures a single copy of `react` and `react-dom` is used. Your existing `dedupe` entries are preserved and merged.
+- **`optimizeDeps.include`** — Ensures `@sentinel-js/react` is pre-bundled with your app’s React in dev mode. Your existing `include` entries are preserved and merged.
 
 ### Plugin options
 
@@ -64,8 +69,8 @@ Your server must serve this file from the built output (e.g. same origin as the 
 
 ## When the plugin runs
 
-- **`vite build`:** Runs. Injects `__SENTINEL_VERSION__` and writes `version.json` to `config.build.outDir` (e.g. `dist/`).
-- **`vite dev`:** Does not run (no injection, no file). The React SDK will see `__SENTINEL_VERSION__` as undefined and report version as `"unknown"` and log a warning—this is expected in development.
+- **`vite dev`:** The plugin runs and injects `resolve.dedupe` and `optimizeDeps.include` so the React SDK works in development. `__SENTINEL_VERSION__` is set to a hash for the dev session. No `version.json` file is written (that only happens on build).
+- **`vite build`:** Full behavior: injects `__SENTINEL_VERSION__`, writes `version.json` to your output directory (e.g. `dist/`), and the same `dedupe`/`optimizeDeps` apply to the build.
 
 ## Integration with @sentinel-js/react
 
