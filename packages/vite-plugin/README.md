@@ -18,16 +18,16 @@ Add the plugin to your Vite config. No other configuration is required.
 
 ```typescript
 // vite.config.ts
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import sentinelPlugin from '@sentinel-js/vite-plugin';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import sentinelPlugin from "@sentinel-js/vite-plugin";
 
 export default defineConfig({
   plugins: [
     react(),
     sentinelPlugin({
-      fileName: 'version.json',  // optional, default: 'version.json'
-      log: true,                 // optional, default: true
+      fileName: "version.json", // optional, default: 'version.json'
+      log: true, // optional, default: true
     }),
   ],
 });
@@ -40,10 +40,10 @@ The plugin automatically injects the following so `@sentinel-js/react` works wit
 
 ### Plugin options
 
-| Option | Type | Default | Description |
-|--------|------|--------|-------------|
-| `fileName` | `string` | `'version.json'` | Name of the version file written to the build output (e.g. `dist/`). |
-| `log` | `boolean` | `true` | If `true`, logs the generated file name and build hash to the console after the build. |
+| Option     | Type      | Default          | Description                                                                            |
+| ---------- | --------- | ---------------- | -------------------------------------------------------------------------------------- |
+| `fileName` | `string`  | `'version.json'` | Name of the version file written to the build output (e.g. `dist/`).                   |
+| `log`      | `boolean` | `true`           | If `true`, logs the generated file name and build hash to the console after the build. |
 
 ## How it works
 
@@ -81,4 +81,4 @@ Your server must serve this file from the built output (e.g. same origin as the 
 
 ## License
 
-ISC
+MIT

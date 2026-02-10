@@ -6,9 +6,9 @@ This repository contains the source code for **Sentinel**, a lightweight update 
 
 This monorepo is managed with **npm workspaces** and includes the following packages:
 
-| Package | Description |
-|--------|-------------|
-| **[`@sentinel-js/react`](./packages/react)** | React SDK: `useSentinel` hook and `<SentinelToast />` component for polling and update UI. |
+| Package                                                  | Description                                                                                                                |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **[`@sentinel-js/react`](./packages/react)**             | React SDK: `useSentinel` hook and `<SentinelToast />` component for polling and update UI.                                 |
 | **[`@sentinel-js/vite-plugin`](./packages/vite-plugin)** | Vite plugin that generates a unique build hash and injects it into the app, and writes `version.json` to the build output. |
 
 The React SDK depends on the Vite plugin at build time: the plugin injects `__SENTINEL_VERSION__` and writes `version.json`; the SDK polls that file and compares versions to detect updates.
@@ -57,9 +57,9 @@ The React SDK depends on the Vite plugin at build time: the plugin injects `__SE
 
 ### Monorepo Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run build` | Build all workspace packages. |
+| Script            | Description                                                                   |
+| ----------------- | ----------------------------------------------------------------------------- |
+| `npm run build`   | Build all workspace packages.                                                 |
 | `npm run publish` | Publish all workspace packages (use with [Changesets](#publishing) workflow). |
 
 ### Package-specific scripts
@@ -110,11 +110,12 @@ sentinel-monorepo/
 
 ## License
 
-ISC
+MIT
 
 ## Troubleshooting
 
 See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) for common issues and solutions, including:
+
 - React hook errors in development mode
 - Version showing as "unknown"
 - Update detection not working
